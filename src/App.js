@@ -2,18 +2,40 @@ import "./styles.css";
 import { Canvas } from "@react-three/fiber";
 import {  OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
-import { useGLTF } from '@react-three/drei'
+// import { useGLTF } from '@react-three/drei'
+//
+// const Model = () => {
+//
+//     const { scene } = useGLTF('/yongin_compressed.glb')
+//
+//     return (
+//     <>
+//       <primitive object={scene} scale={0.05} />
+//     </>
+//   );
+// };
 
-const Model = () => {
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-    const { scene } = useGLTF('/yongin_compressed.glb')
-
+export function Model(props) {
+    const { nodes, materials } = useGLTF("/yongin_compressed.glb");
     return (
-    <>
-      <primitive object={scene} scale={0.05} />
-    </>
-  );
-};
+        <group {...props} dispose={null}>
+            <mesh
+                castShadow
+                receiveShadow
+                geometry={nodes.Tile_1.geometry}
+                material={nodes.Tile_1.material}
+            />
+
+        </group>
+    );
+}
+
+useGLTF.preload("/yongin_compressed.glb");
+
+
 
 export default function App() {
   return (
@@ -21,7 +43,7 @@ export default function App() {
       <Canvas>
           <ambientLight />
         <Suspense fallback={null}>
-          <Model />
+          <Model scale={0.07} />
           <OrbitControls />
         </Suspense>
       </Canvas>
