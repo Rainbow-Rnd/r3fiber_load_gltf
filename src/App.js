@@ -1,15 +1,16 @@
 import "./styles.css";
 import { Canvas } from "@react-three/fiber";
-import { useLoader } from "@react-three/fiber";
-import { Environment, OrbitControls } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import {  OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
+import { useGLTF } from '@react-three/drei'
 
 const Model = () => {
-  const gltf = useLoader(GLTFLoader, "./Poimandres.gltf");
-  return (
+
+    const { scene } = useGLTF('/yongin_compressed.glb')
+
+    return (
     <>
-      <primitive object={gltf.scene} scale={0.4} />
+      <primitive object={scene} scale={0.05} />
     </>
   );
 };
@@ -18,12 +19,13 @@ export default function App() {
   return (
     <div className="App">
       <Canvas>
+          <ambientLight />
         <Suspense fallback={null}>
           <Model />
           <OrbitControls />
-          <Environment preset="sunset" background />
         </Suspense>
       </Canvas>
     </div>
   );
 }
+0
