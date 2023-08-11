@@ -18,23 +18,33 @@ import { Suspense } from "react";
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-export function Model(props) {
-    const { nodes, materials } = useGLTF("/yongin_compressed.glb");
-    return (
-        <group {...props} dispose={null}>
-            <mesh
-                castShadow
-                receiveShadow
-                geometry={nodes.Tile_1.geometry}
-                material={nodes.Tile_1.material}
-            />
+import {Building} from './Buidling'
+import {Area1} from './1'
+import {Area3} from './3'
+import {Area4} from './4'
+import {Area5} from './5'
+import {Area6} from './6'
+import {Area7} from './7'
 
-        </group>
-    );
-}
+// export function Model(props) {
+//     const { nodes, materials } = useGLTF("/yongin_compressed.glb");
+//     return (
+//         <group {...props} dispose={null}>
+//             <mesh
+//                 castShadow
+//                 receiveShadow
+//                 geometry={nodes.Tile_1.geometry}
+//                 material={nodes.Tile_1.material}
+//             />
+//
+//         </group>
+//     );
+// }
+//
+// useGLTF.preload("/yongin_compressed.glb");
 
-useGLTF.preload("/yongin_compressed.glb");
 
+useGLTF.preload("/original.glb");
 
 
 export default function App() {
@@ -43,11 +53,19 @@ export default function App() {
       <Canvas>
           <ambientLight />
         <Suspense fallback={null}>
-          <Model scale={0.07} />
+            <group position-y={-0.75} dispose={null}>
+                <Building />
+                <Area1/>
+                <Area3/>
+                <Area4/>
+                <Area5/>
+                <Area6/>
+                <Area7/>
+            </group>
+
           <OrbitControls />
         </Suspense>
       </Canvas>
     </div>
   );
 }
-0
