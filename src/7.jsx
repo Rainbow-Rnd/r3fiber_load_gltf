@@ -4,16 +4,21 @@ Command: npx gltfjsx@6.2.10 7.glb --transform
 Files: 7.glb [4.54MB] > 7-transformed.glb [1.46MB] (68%)
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-export function Area7(props) {
-  const { nodes, materials } = useGLTF('/7-transformed.glb')
+export function Area7({ showModel }) {
+  const { nodes, materials } = useGLTF("/7-transformed.glb");
+
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.Tile_1009.geometry} material={materials.Material_0} />
+    <group dispose={null}>
+      <mesh
+        onClick={showModel}
+        geometry={nodes.Tile_1009.geometry}
+        material={materials.Material_0}
+      />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/7-transformed.glb')
+useGLTF.preload("/7-transformed.glb");

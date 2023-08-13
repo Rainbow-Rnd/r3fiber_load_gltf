@@ -4,16 +4,21 @@ Command: npx gltfjsx@6.2.10 4.glb --transform
 Files: 4.glb [4.54MB] > 4-transformed.glb [1.46MB] (68%)
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-export function Area4(props) {
-  const { nodes, materials } = useGLTF('/4-transformed.glb')
+export function Area4({ showModel }) {
+  const { nodes, materials } = useGLTF("/4-transformed.glb");
+
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.Tile_1005.geometry} material={materials.Material_0} />
+    <group dispose={null}>
+      <mesh
+        onClick={showModel}
+        geometry={nodes.Tile_1005.geometry}
+        material={materials.Material_0}
+      />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/4-transformed.glb')
+useGLTF.preload("/4-transformed.glb");

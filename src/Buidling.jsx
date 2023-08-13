@@ -4,16 +4,21 @@ Command: npx gltfjsx@6.2.10 original.glb --transform
 Files: original.glb [7.65MB] > original-transformed.glb [2.31MB] (70%)
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-export function Building(props) {
-  const { nodes, materials } = useGLTF('/original-transformed.glb')
+export function Building({ showModel }) {
+  const { nodes, materials } = useGLTF("/original-transformed.glb");
+
   return (
-    <group {...props} dispose={null}>
-      <mesh geometry={nodes.Tile_1.geometry} material={materials.Material_0} />
+    <group dispose={null}>
+      <mesh
+        // onClick={showModel}
+        geometry={nodes.Tile_1.geometry}
+        material={materials.Material_0}
+      />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/original-transformed.glb')
+useGLTF.preload("/original-transformed.glb");
