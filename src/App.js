@@ -8,7 +8,6 @@ import { useGLTF } from "@react-three/drei";
 
 export function Model(props) {
   const { nodes, materials } = useGLTF("/yongin_compressed.glb");
-
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -29,7 +28,16 @@ export default function App() {
       <Canvas>
         <ambientLight />
         <Suspense fallback={null}>
-          <Model scale={0.07} />
+          <group position-y={-0.75} dispose={null}>
+            <Building />
+            <Area1 />
+            <Area3 />
+            <Area4 />
+            <Area5 />
+            <Area6 />
+            <Area7 />
+          </group>
+
           <OrbitControls />
         </Suspense>
       </Canvas>
