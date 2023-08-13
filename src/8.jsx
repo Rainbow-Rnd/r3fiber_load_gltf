@@ -1,6 +1,6 @@
 import React from "react";
 
-function Popup({ visible, onHide }) {
+function Popup({ visible, onHide , imageFile }) {
   const popupStyle = {
     position: "fixed",
     top: 0,
@@ -47,7 +47,8 @@ function Popup({ visible, onHide }) {
         </div>
         <div>
           <img
-            src={process.env.PUBLIC_URL + "/crack.jpg"}
+              //src={process.env.PUBLIC_URL + "/crack_1.jpg"}
+              src={process.env.PUBLIC_URL + `/${imageFile}.jpg`}
             alt="image"
             style={{ width: "100%", marginBottom: "10px" }}
           />

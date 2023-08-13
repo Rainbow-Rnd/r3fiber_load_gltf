@@ -19,8 +19,14 @@ useGLTF.preload("/original.glb");
 
 export default function App() {
   const [isModelOpen, setisModelOpen] = useState(false);
-  const showModel = () => {
+
+  const [imageFile, setImageFile] = useState('');
+
+  const showModel = (imageFile) => {
+
+    console.log(`showModel imageFile: ${imageFile}`)
     setisModelOpen(true);
+    setImageFile(imageFile)
   };
   const onHide = () => {
     setisModelOpen(false);
@@ -44,7 +50,7 @@ export default function App() {
           <OrbitControls />
         </Suspense>
       </Canvas>
-      <Popup visible={isModelOpen} onHide={onHide} />
+      <Popup visible={isModelOpen} onHide={onHide} imageFile={imageFile}/>
     </div>
   );
 }
