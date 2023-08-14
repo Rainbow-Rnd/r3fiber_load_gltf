@@ -7,25 +7,20 @@ Files: 3.glb [4.54MB] > 3-transformed.glb [1.47MB] (68%)
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
-
 export function Area3({ showModel }) {
   const { nodes, materials } = useGLTF("/3-transformed.glb");
 
-    const param = 'crack_3'
+  const param = "crack_3";
 
   return (
     <group dispose={null}>
       <mesh
-          onClick={()=>showModel(param)}
+        onClick={() => showModel(param)}
         geometry={nodes.Tile_1004.geometry}
         material={materials.Material_0}
       >
-          <meshPhongMaterial
-              color={new THREE.Color(0xeeeeee)}
-              shininess={0}
-          />
+        <meshPhongMaterial color={new THREE.Color(0xeeeeee)} shininess={0} />
       </mesh>
-
     </group>
   );
 }

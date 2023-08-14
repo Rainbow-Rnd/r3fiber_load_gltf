@@ -11,19 +11,16 @@ import * as THREE from "three";
 export function Area1({ showModel }) {
   const { nodes, materials } = useGLTF("/1-transformed.glb");
 
-  const param = 'crack_1'
+  const param = "crack_1";
 
   return (
     <group dispose={null}>
       <mesh
-        onClick={()=>showModel(param)}
+        onClick={() => showModel(param)}
         geometry={nodes.Tile_1003.geometry}
         material={materials.Material_0}
       >
-          <meshPhongMaterial
-              color={new THREE.Color(0xeeeeee)}
-              shininess={0}
-          />
+        <meshPhongMaterial color={new THREE.Color(0xeeeeee)} shininess={0} />
       </mesh>
     </group>
   );
